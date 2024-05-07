@@ -1,0 +1,20 @@
+
+server.port: 8081
+
+spring:
+  datasource:
+    url: jdbc:postgresql://motty.db.elephantsql.com:5432/vklngfom?useTimezone=true&serverTimezone=UTC&useLegacyDate
+    username: vklngfom
+    password: klTvC7c6Q7hE1ncSYz8K9WJBa8Woa-Nl
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate.format_sql: true
+
+logging:
+  level:
+    org:
+      hibernate:
+        type: trace
