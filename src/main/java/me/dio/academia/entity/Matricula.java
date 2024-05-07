@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name="tb_matriculas")
+@Entity
 public class Matricula {
  @Id
  @GeneratedValue(strategy=GenerationType.IDENTITY)
