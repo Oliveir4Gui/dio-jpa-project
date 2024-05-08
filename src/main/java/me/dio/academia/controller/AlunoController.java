@@ -9,6 +9,7 @@ import me.dio.academia.service.IAlunoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -18,8 +19,8 @@ public class AlunoController {
     private AlunoServiceImp service;
 
     @GetMapping
-    public List<Aluno> getall(){
-    return service.getAll();
+    public List<Aluno> getall(@RequestParam(value = "dataDeNascimento",required = false) String dataDeNascimento){
+    return service.getAll(dataDeNascimento);
     }
 
     @PostMapping
@@ -31,5 +32,6 @@ public class AlunoController {
     public List<AvaliacaoFisica> getAllAvaliacaoFisica(@PathVariable Long id){
     return service.getAllAvaliacaoFisica(id);
     }
+
 
 }
