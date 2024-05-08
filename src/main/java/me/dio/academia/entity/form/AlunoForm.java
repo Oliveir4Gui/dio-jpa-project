@@ -1,8 +1,10 @@
 package me.dio.academia.entity.form;
 
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.br.CPF;
 
 import java.time.LocalDate;
 
@@ -11,44 +13,20 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class AlunoForm {
 
+  @NotEmpty(message = "Preencha o campo corretamente" )
+  @Size(min = 3,max = 50, message = "'${validatedValue}' precisa estar entre {min} e {max} caracteres.")
   private String nome;
 
+  @NotEmpty(message = "Preencha o campo corretamente" )
+  @CPF(message ="'${validatedValue}' e invalido")
   private String cpf;
 
+  @NotEmpty(message = "Preencha o campo corretamente" )
+  @Size(min = 3,max = 50, message = "'${validatedValue}' precisa estar entre {min} e {max} caracteres.")
   private String bairro;
 
+  @NotNull(message = "Preencha o campo corretamente")
+  @Past(message = "Data '${validatedValue}' e invalida")
   private LocalDate dataDeNascimento;
 
-  public String getNome() {
-    return nome;
   }
-
-  public void setNome(String nome) {
-    this.nome = nome;
-  }
-
-  public String getCpf() {
-    return cpf;
-  }
-
-  public void setCpf(String cpf) {
-    this.cpf = cpf;
-  }
-
-  public LocalDate getDataDeNascimento() {
-    return dataDeNascimento;
-  }
-
-  public void setDataDeNascimento(LocalDate dataDeNascimento) {
-    this.dataDeNascimento = dataDeNascimento;
-  }
-
-  public String getBairro() {
-    return bairro;
-  }
-
-  public void setBairro(String bairro) {
-    this.bairro = bairro;
-  }
-}
-

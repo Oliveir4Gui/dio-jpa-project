@@ -1,6 +1,8 @@
 package me.dio.academia.controller;
 
+import jakarta.validation.Valid;
 import me.dio.academia.entity.Aluno;
+import me.dio.academia.entity.AvaliacaoFisica;
 import me.dio.academia.entity.form.AlunoForm;
 import me.dio.academia.service.AlunoServiceImp;
 import me.dio.academia.service.IAlunoService;
@@ -21,8 +23,13 @@ public class AlunoController {
     }
 
     @PostMapping
-    public Aluno create(@RequestBody AlunoForm form) {
+    public Aluno create(@Valid @RequestBody AlunoForm form) {
      return service.create(form);
+    }
+
+    @GetMapping("/avaliacoes/{id}")
+    public List<AvaliacaoFisica> getAllAvaliacaoFisica(@PathVariable Long id){
+    return service.getAllAvaliacaoFisica(id);
     }
 
 }

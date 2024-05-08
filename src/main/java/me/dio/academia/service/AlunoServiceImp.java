@@ -1,4 +1,5 @@
 package me.dio.academia.service;
+import me.dio.academia.entity.AvaliacaoFisica;
 import me.dio.academia.entity.form.AlunoForm;
 import me.dio.academia.entity.Aluno;
 import me.dio.academia.entity.form.AlunoForm;
@@ -43,4 +44,12 @@ public class AlunoServiceImp  implements IAlunoService{
     public void delete(Long id) {
 
     }
+
+    @Override
+    public List<AvaliacaoFisica> getAllAvaliacaoFisica(Long id) {
+      Aluno aluno = repository.findById(id).get();
+      return aluno.getAvaliacoes();
+    }
+
+
 }
