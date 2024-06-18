@@ -1,0 +1,17 @@
+
+version: '3.8'
+services:
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: academia
+    networks:
+      - local-network
+
+networks:
+  local-network:
+    driver: bridge

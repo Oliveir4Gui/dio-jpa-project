@@ -1,6 +1,7 @@
 package me.dio.academia.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,8 +18,8 @@ public class AvaliacaoFisica {
  @Id
  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-
- @ManyToOne(cascade = CascadeType.ALL)
+ @JsonManagedReference
+ @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
  @JoinColumn(name = "aluno_id")
   private Aluno aluno;
 

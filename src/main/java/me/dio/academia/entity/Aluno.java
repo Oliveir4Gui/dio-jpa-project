@@ -2,6 +2,7 @@ package me.dio.academia.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,7 +20,7 @@ import java.util.List;
 @Entity
 public class Aluno {
   @Id
-  @GeneratedValue(strategy=GenerationType.IDENTITY)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
   private String nome;
@@ -30,8 +31,11 @@ public class Aluno {
   private String bairro;
 
   private LocalDate dataDeNascimento;
-  @OneToMany(mappedBy = "aluno",fetch = FetchType.LAZY)
+  @JsonManagedReference
+  @OneToMany(mappedBy = "aluno", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
   @JsonIgnore
   private List<AvaliacaoFisica> avaliacoes = new ArrayList<>();
 
 }
+
+

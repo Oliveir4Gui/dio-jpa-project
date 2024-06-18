@@ -20,4 +20,8 @@ public class AvaliacaoFisicaController {
      return service.create(form);
     }
 
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id){
+        service.delete(id);
+    }
 }
