@@ -8,7 +8,6 @@ import java.util.List;
 
 public interface MatriculaRepository extends JpaRepository<Matricula, Long> {
 
-    @Query("FROM Matricula m WHERE m.aluno.bairro = :bairro")
-    List<Matricula> findMatriculaByAluno_Bairro(String bairro);
+    List<Matricula> findByAlunoBairro(String bairro);
 
 }

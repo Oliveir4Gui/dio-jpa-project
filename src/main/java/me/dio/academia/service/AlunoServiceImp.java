@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AlunoServiceImp  implements IAlunoService{
@@ -45,12 +46,20 @@ public class AlunoServiceImp  implements IAlunoService{
 
     @Override
     public Aluno update(Long id, AlunoUpdateForm formUpdate) {
-        return null;
+       Optional<Aluno> alunos = repository.findById(id);
+       if(alunos.isPresent()){
+           Aluno aluno = alunos.get();
+           aluno.setNome(formUpdate.getNome());
+           aluno.setBairro(formUpdate.getBairro());
+           repository.save(aluno);
+           return aluno;
+       }
+       return null;
     }
 
     @Override
     public void delete(Long id) {
-
+     repository.deleteById(id);
     }
 
     @Override
