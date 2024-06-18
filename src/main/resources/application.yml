@@ -3,9 +3,9 @@ server.port: 8081
 
 spring:
   datasource:
-    url: jdbc:postgresql://motty.db.elephantsql.com:5432/vklngfom?useTimezone=true&serverTimezone=UTC&useLegacyDate
-    username: vklngfom
-    password: klTvC7c6Q7hE1ncSYz8K9WJBa8Woa-Nl
+    url: jdbc:mysql://localhost:3306/academia?useSSL=false&serverTimezone=UTC
+    username: root
+    password: 1234
   jpa:
     show-sql: true
     hibernate:
