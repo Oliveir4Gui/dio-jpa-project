@@ -46,25 +46,11 @@ public class AvaliacaoFisicaImp implements IAvaliacaoFisicaService{
 
     @Override
     public AvaliacaoFisica update(Long id, AvaliacaoFisicaUpdateForm formUpdate) {
-        Optional<Aluno> aluno = alunoRepository.findById(id);
-        if(aluno.isPresent()){
-            AvaliacaoFisicaForm form = new AvaliacaoFisicaForm();
-            form.setAlunoId(id);
-            form.setPeso(formUpdate.getPeso());
-            form.setAltura(formUpdate.getAltura());
-            return create(form);
-        }
-       return null;
+        return null;
     }
 
     @Override
     public void delete(Long id) {
-        Optional<Aluno> optionalAluno = alunoRepository.findById(id);
-        if(optionalAluno.isPresent()){
-            List<AvaliacaoFisica> avaliacaoFisicas = optionalAluno.get().getAvaliacoes();
-            for(AvaliacaoFisica avaliacaoFisica : avaliacaoFisicas){
-                repository.deleteById(avaliacaoFisica.getId());
-            }
-        }
+
     }
 }
